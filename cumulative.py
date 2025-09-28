@@ -40,5 +40,7 @@ df = pldata.wind(return_type='pandas')
 print(df.head(10))
 print(df.tail(10))
 
-df['strength'] = df['strength'].astype(float)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-
+#Code below is not extracting - and + symbols. Will need to test with regex d next.
+df['strength'] = df['strength'].str.replace(r"\-", "", regex=True)
+df['strength'] = df['strength'].str.replace(r"\+", "", regex=True)
+df['strength'] = df['strength'].astype(float)
