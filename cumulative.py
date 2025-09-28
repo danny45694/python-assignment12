@@ -25,7 +25,11 @@ try:
     df['cumulative'] = df.apply(cumulative, axis=1)
     df['cumulative'] = df['total_price'].cumsum()
 
-    
-
+    df.plot(kind='line',
+            title = 'cumulative revenue vs. order_id',
+            xlabel='cumulative revenue',
+            ylabel='order_id',
+            figsize=(10,6))
+    plt.show()
 except sqlite3.Error as e:
     print(f"Error connecting to SQLite DB: {e}")
