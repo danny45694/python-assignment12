@@ -21,7 +21,3 @@ try:
 
 except sqlite3.Error as e:
     print(f"Error connecting to SQLite DB: {e}")
-
-finally:
-    if connection:
-        connection.close()
