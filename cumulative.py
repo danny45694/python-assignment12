@@ -37,10 +37,22 @@ df.plot(kind='line',
 
 #Task3
 df = pldata.wind(return_type='pandas')
-print(df.head(10))
-print(df.tail(10))
+
 
 #Code below is not extracting - and + symbols. Will need to test with regex d next.
 df['strength'] = df['strength'].str.replace(r"\-", "", regex=True)
 df['strength'] = df['strength'].str.replace(r"\+", "", regex=True)
 df['strength'] = df['strength'].astype(float)
+
+print(df.head(10))
+print(df.tail(10))
+
+fig = px.scatter(
+    df,
+    x='strength',
+    y='frequency',
+    color='direction',
+    title='strength vs. frequency'
+)
+
+fig.write_html("wind.html", auto_open=True)
