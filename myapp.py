@@ -16,17 +16,17 @@ app.layout = html.Div([ # This div is for the dropdown you see at the top, and a
         options=[{"label": country, "value": country} for country in df.columns], # This populates the dropdown with the list of countries
         value="Canada" # This is the initial value
     ),
-    dcc.Graph(id="gdp=growth") # And the graph itself has to have an ID
+    dcc.Graph(id="gdp-growth") # And the graph itself has to have an ID
 ])
 
 # Callback for dynamic updates
 @app.callback( # OK, now this is a decorator.  Hmm, we haven't talked about decorators in Python.  This decorator is decorating the update_graph() function.
     # Because of the decorator, the update_graph() will be called when the stock-dropdown changes, passing the value selected in the dropdown.
-    Output("gdp", "figure"),  # And ... you get the graph back
+    Output("gdp-growth", "figure"),  # And ... you get the graph back
     [Input("country-dropdown", "value")] # When you pass in the value of the dropdown.
 )
 def update_graph(country): # This function is what actually does the plot, by calling Plotly, in this case a line chart of date (which is the index) vs. the chosen stock price.
-    fig = px.line(df, df.index, y=symbol, title=f"{symbol} Price")
+    fig = px.line(df, df.year, y=country, title=f"{country} gdp")
     return fig
 
 # Run the app
