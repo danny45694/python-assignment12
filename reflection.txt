@@ -1,0 +1,3 @@
+Static visualizations are easy to create and great for quickly showing data. Interactive visualizations are great for when you want to let users explore the data and mess around with it. 
+One of the benefits of using dashboards for real time data is the ability to completely customize the insights presented for the user. They can explore the data and mess with it easier.
+Tools like Plotly and Dash can assist by allowing a person who import datasets, have it graphed and displayed dynamically to an audience. You could use Dash to deploy to a 3rd party server. This would allow users access to the data/reports whenever and wherever they like.
